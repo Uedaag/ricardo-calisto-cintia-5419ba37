@@ -120,6 +120,10 @@ export function Hero() {
             </h1>
             <p className="mt-5 text-base text-muted-foreground md:text-lg">{model.subheadline}</p>
 
+            <div className="mt-8">
+              <Countdown />
+            </div>
+
             <div className="mt-8 flex justify-center">
               <Button variant="hero" size="xl" className="w-full sm:w-auto">
                 {model.cta}
