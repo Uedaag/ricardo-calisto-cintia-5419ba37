@@ -110,7 +110,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="w-full max-w-xl rounded-3xl border border-border/60 bg-background/70 p-7 backdrop-blur-md shadow-[var(--shadow-card)] md:p-10">
+          <div className="mx-auto w-full max-w-xl rounded-3xl border border-border/60 bg-background/70 p-7 text-center backdrop-blur-md shadow-[var(--shadow-card)] md:p-10 lg:mx-0 lg:text-left">
             <span className="inline-block rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
               {model.badge}
             </span>
