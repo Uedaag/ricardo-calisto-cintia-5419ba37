@@ -5,11 +5,14 @@ import { Faq } from "@/components/landing/Faq";
 import {
   Bonus,
   Differential,
+  Discover,
   Expert,
   FinalCta,
   ForWho,
   Foundations,
+  Guarantee,
   Learn,
+  Offer,
   Testimonials,
   Transformation,
 } from "@/components/landing/ContentSections";
@@ -17,17 +20,20 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Imersão Transformadora | Garanta Sua Vaga" },
+      { title: "Esquadrias em Mãos | Workshop ao Vivo com Ricardo Calisto" },
       {
         name: "description",
         content:
-          "Descubra como transformar seu resultado desejado em benefício real com um método simples, prático e validado. Vagas limitadas — garanta a sua.",
+          "Aprenda a fabricar sua primeira janela de alumínio em casa, sem oficina e sem máquinas caras. Workshop ao vivo de 2 horas com Ricardo Calisto. Vagas limitadas.",
       },
-      { property: "og:title", content: "Imersão Transformadora | Garanta Sua Vaga" },
+      {
+        property: "og:title",
+        content: "Esquadrias em Mãos | Workshop ao Vivo com Ricardo Calisto",
+      },
       {
         property: "og:description",
         content:
-          "Uma jornada para sair da dor atual e conquistar o resultado final com clareza e segurança.",
+          "Veja, na prática, como fabricar uma janela de alumínio simples do começo ao fim. Material, medida, corte e montagem na ordem certa.",
       },
       { property: "og:type", content: "website" },
     ],
@@ -40,6 +46,7 @@ function Index() {
     <main className="min-h-screen bg-background">
       <Hero />
       <Transformation />
+      <Discover />
       <Lotes />
       <Expert />
       <Foundations />
@@ -48,10 +55,13 @@ function Index() {
       <ForWho />
       <Differential />
       <Testimonials />
+      <Offer />
+      <Guarantee />
       <Faq />
       <FinalCta />
       <footer className="border-t border-border px-5 py-10 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} [Nome do Expert]. Todos os direitos reservados.
+        © {new Date().getFullYear()} Ricardo Calisto — Esquadrias em Mãos. Todos os direitos
+        reservados.
       </footer>
     </main>
   );

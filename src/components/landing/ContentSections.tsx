@@ -1,4 +1,4 @@
-import { ArrowRight, Quote, Sparkles, Star, Target } from "lucide-react";
+import { ArrowRight, Quote, Shield, Sparkles, Star, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Eyebrow, Reveal, Section } from "./primitives";
 import expertImg from "@/assets/expert.jpg";
@@ -19,36 +19,66 @@ function BulletList({ items }: { items: string[] }) {
   );
 }
 
-const lorem = [
-  "lorem ipsum dolor sit amet",
-  "lorem ipsum dolor sit amet",
-  "lorem ipsum dolor sit amet",
+const transformations = [
+  {
+    before: "Hoje você olha a esquadria pronta e só vê preço alto.",
+    after: "Depois, começa a enxergar material, medida, corte e montagem.",
+  },
+  {
+    before: "Hoje parece coisa de fábrica.",
+    after: "Depois, parece um processo com começo, meio e fim.",
+  },
+  {
+    before: "Hoje você depende de alguém fazer.",
+    after: "Depois, entende como começar com as próprias mãos.",
+  },
 ];
 
 export function Transformation() {
   return (
     <Section>
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-        <Reveal>
-          <Eyebrow>Qual a transformação?</Eyebrow>
-          <h2 className="mt-5 text-3xl font-bold md:text-4xl">
-            De onde você está para onde quer chegar
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Você vai sair de um cenário de <span className="text-foreground/90">[dor/problema]</span>{" "}
-            para um novo nível de <span className="text-foreground/90">[resultado/benefício]</span>,
-            com mais direção, confiança e previsibilidade.
-          </p>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <Eyebrow>O que você vai descobrir?</Eyebrow>
-          <h2 className="mt-5 text-3xl font-bold md:text-4xl">Clareza no caminho certo</h2>
-          <p className="mt-4 text-muted-foreground">
-            Ao longo desta experiência, você vai entender exatamente o que precisa fazer para
-            alcançar <span className="text-foreground/90">[resultado desejado]</span> sem depender de
-            tentativa e erro.
-          </p>
-        </Reveal>
+      <Reveal>
+        <div className="text-center">
+          <Eyebrow>A transformação</Eyebrow>
+          <h2 className="mt-5 text-3xl font-bold md:text-4xl">De preço alto para começo possível</h2>
+        </div>
+      </Reveal>
+      <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+        {transformations.map((t, i) => (
+          <Reveal key={i} delay={i * 0.1}>
+            <div className="flex h-full flex-col gap-4 rounded-2xl border border-border bg-card/60 p-7">
+              <p className="text-sm text-muted-foreground">{t.before}</p>
+              <div className="flex items-center gap-2 text-primary">
+                <ArrowRight className="size-4" />
+                <span className="text-xs font-semibold uppercase tracking-widest">Depois</span>
+              </div>
+              <p className="font-medium text-foreground/90">{t.after}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+const discoverItems = [
+  "Por que esquadria de alumínio parece difícil quando ensinam fora de ordem.",
+  "O que você realmente precisa para começar sem montar uma oficina.",
+  "Como uma janela simples de 2 folhas é pensada, cortada e montada.",
+  "Onde o iniciante mais erra antes de perder material.",
+];
+
+export function Discover() {
+  return (
+    <Section className="border-y border-border bg-card/30">
+      <Reveal>
+        <div className="text-center">
+          <Eyebrow>O que você vai descobrir</Eyebrow>
+          <h2 className="mt-5 text-3xl font-bold md:text-4xl">Clareza do material à montagem</h2>
+        </div>
+      </Reveal>
+      <div className="mx-auto mt-10 max-w-3xl">
+        <BulletList items={discoverItems} />
       </div>
     </Section>
   );
@@ -56,14 +86,14 @@ export function Transformation() {
 
 export function Expert() {
   return (
-    <Section id="expert" className="border-y border-border bg-card/30">
+    <Section id="expert">
       <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
         <Reveal>
           <div className="relative mx-auto max-w-sm">
             <div className="absolute -inset-4 rounded-3xl bg-[image:var(--gradient-gold)] opacity-20 blur-2xl" />
             <img
               src={expertImg}
-              alt="Foto do expert responsável pela mentoria"
+              alt="Foto de Ricardo Calisto, especialista em esquadrias de alumínio"
               loading="lazy"
               width={800}
               height={1000}
@@ -73,16 +103,22 @@ export function Expert() {
         </Reveal>
         <Reveal delay={0.1}>
           <Eyebrow>Apresentamos</Eyebrow>
-          <h2 className="mt-5 text-3xl font-bold md:text-4xl">[Nome do Expert]</h2>
+          <h2 className="mt-5 text-3xl font-bold md:text-4xl">Ricardo Calisto</h2>
           <p className="mt-4 text-muted-foreground">
-            [Nome do Expert] é especialista em [área de atuação], com experiência em ajudar pessoas a
-            conquistarem [resultado]. Sua abordagem une estratégia, prática e aplicação direta.
+            Ele começou nas esquadrias ainda jovem, no chão de fábrica, quando não existia tutorial
+            fácil, curso online ou passo a passo pronto. Aprendeu olhando, errando, cortando,
+            montando, corrigindo e vendo material caro virar prejuízo por detalhe pequeno.
+          </p>
+          <p className="mt-3 text-muted-foreground">
+            Com cerca de 30 anos de caminhada em fabricação, montagem, instalação e manutenção,
+            descobriu uma verdade que pouca gente fala. Hoje, ele ensina isso de forma simples para
+            quem quer começar em casa, sem se perder em teoria difícil.
           </p>
           <div className="mt-6 rounded-2xl border border-primary/20 bg-primary/5 p-5">
             <p className="flex items-start gap-3 text-sm text-foreground/90">
               <Sparkles className="mt-0.5 size-5 shrink-0 text-primary" />
-              Esse processo foi criado para gerar clareza, acelerar decisões e conduzir você de forma
-              objetiva até o resultado desejado.
+              O grande mistério da esquadria não é a máquina. É entender o material, o perfil e a
+              ordem certa.
             </p>
           </div>
         </Reveal>
@@ -91,31 +127,48 @@ export function Expert() {
   );
 }
 
+const firstThings = [
+  "Esquadria não é dom. É sequência.",
+  "Máquina cara não corrige medida errada.",
+  "Vídeo solto pode custar mais caro que uma aula organizada.",
+  "Você não precisa saber tudo. Precisa começar pelo produto certo.",
+];
+
 export function Foundations() {
   return (
-    <Section>
+    <Section className="border-y border-border bg-card/30">
       <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
         <Reveal>
           <Eyebrow>Entenda primeiro</Eyebrow>
           <h2 className="mt-5 text-2xl font-bold md:text-3xl">
-            O que você precisa entender primeiro
+            As primeiras coisas que você precisa entender
           </h2>
-          <p className="mt-4 text-muted-foreground">
-            Antes de avançar, é importante compreender os fundamentos que sustentam esse método e por
-            que eles fazem toda a diferença no resultado final.
-          </p>
-          <BulletList items={lorem} />
+          <BulletList items={firstThings} />
         </Reveal>
         <Reveal delay={0.1}>
-          <Eyebrow>O método</Eyebrow>
-          <h2 className="mt-5 text-2xl font-bold md:text-3xl">
-            O que é o protocolo / produto / serviço
-          </h2>
+          <Eyebrow>O que é</Eyebrow>
+          <h2 className="mt-5 text-2xl font-bold md:text-3xl">Esquadrias em Mãos</h2>
           <p className="mt-4 text-muted-foreground">
-            É um processo estruturado, desenhado para ajudar você a aplicar os passos certos na ordem
-            certa, com foco em resultado e consistência.
+            O Esquadrias em Mãos é um workshop ao vivo de 2 horas para você ver, na prática, como
+            fabricar uma primeira janela de alumínio simples em casa, com poucas ferramentas e sem
+            oficina profissional.
           </p>
-          <BulletList items={lorem} />
+          <div className="mt-6 space-y-4">
+            <div className="rounded-2xl border border-border bg-card/60 p-5">
+              <p className="text-sm font-semibold text-primary">Fase 1 — Entender o começo certo</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Você vai ver quais materiais, perfis e ferramentas fazem sentido para uma primeira
+                janela, sem comprar coisa à toa.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border bg-card/60 p-5">
+              <p className="text-sm font-semibold text-primary">Fase 2 — Ver a janela nascer</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Você acompanha medida, plano de corte, corte dos perfis e montagem da janela simples
+                de 2 folhas.
+              </p>
+            </div>
+          </div>
         </Reveal>
       </div>
     </Section>
@@ -123,26 +176,22 @@ export function Foundations() {
 }
 
 const learnItems = [
-  "Como identificar [problema principal]",
-  "Como aplicar [método/estratégia]",
-  "Como evitar os erros mais comuns",
-  "Como acelerar seus resultados com mais segurança",
-  "Como construir uma rotina de execução consistente",
+  "Quais materiais, perfis e ferramentas fazem sentido para começar",
+  "Como tirar a medida e montar o plano de corte",
+  "Como cortar os perfis sem desperdiçar material",
+  "Como montar uma janela simples de 2 folhas",
+  "Onde o iniciante mais erra — e como evitar",
 ];
 
 export function Learn() {
   return (
-    <Section className="border-y border-border bg-card/30">
+    <Section>
       <Reveal>
         <div className="text-center">
           <Eyebrow>Ao vivo</Eyebrow>
           <h2 className="mt-5 text-3xl font-bold md:text-4xl">
-            Durante a imersão / workshop ao vivo, você aprenderá:
+            Durante o workshop ao vivo, você vai aprender:
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Você terá acesso a conteúdos práticos e direcionados para colocar em ação aquilo que
-            realmente importa.
-          </p>
         </div>
       </Reveal>
       <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -162,30 +211,36 @@ export function Learn() {
 }
 
 const bonuses = [
-  "Bônus 1: lorem ipsum dolor sit amet",
-  "Bônus 2: lorem ipsum dolor sit amet",
-  "Bônus 3: lorem ipsum dolor sit amet",
+  {
+    title: "Bônus 1 — Mini-guia de ferramentas essenciais",
+    desc: "Para saber o que usar no começo, incluindo alternativas mais baratas.",
+  },
+  {
+    title: "Bônus 2 — Modelo de plano de corte",
+    desc: "O mesmo modelo usado na aula, pronto para imprimir e adaptar.",
+  },
+  {
+    title: "Bônus 3 — Checklist Primeira Produção em Casa",
+    desc: "Um passo a passo resumido para seguir depois da aula.",
+  },
 ];
 
 export function Bonus() {
   return (
-    <Section>
+    <Section className="border-y border-border bg-card/30">
       <Reveal>
         <div className="text-center">
-          <Eyebrow>Bônus exclusivos</Eyebrow>
-          <h2 className="mt-5 text-3xl font-bold md:text-4xl">Presentes / bônus exclusivos</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Além do conteúdo principal, você também receberá materiais extras para aprofundar seu
-            aprendizado e facilitar a aplicação.
-          </p>
+          <Eyebrow>Presentes exclusivos</Eyebrow>
+          <h2 className="mt-5 text-3xl font-bold md:text-4xl">Bônus para repetir o processo</h2>
         </div>
       </Reveal>
       <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
         {bonuses.map((bonus, i) => (
-          <Reveal key={bonus} delay={i * 0.1}>
+          <Reveal key={bonus.title} delay={i * 0.1}>
             <div className="h-full rounded-2xl border border-primary/20 bg-primary/5 p-7">
               <Star className="size-7 text-primary" />
-              <p className="mt-4 font-semibold">{bonus}</p>
+              <p className="mt-4 font-semibold">{bonus.title}</p>
+              <p className="mt-2 text-sm text-muted-foreground">{bonus.desc}</p>
             </div>
           </Reveal>
         ))}
@@ -194,39 +249,39 @@ export function Bonus() {
   );
 }
 
+const whyItems = [
+  "Porque cada orçamento caro empurra sua obra para trás.",
+  "Porque aprender por pedaços aumenta o risco de errar.",
+  "Porque uma barra cortada errada custa mais que essa aula.",
+  "Porque talvez o que falta não seja coragem. É alguém mostrar a ordem.",
+];
+
 const forWho = [
-  "Para quem está em [situação atual]",
-  "Para quem quer [resultado desejado]",
-  "Para quem busca [benefício principal]",
-  "Para quem quer evitar [dor/problema]",
-  "Para quem está pronto para agir com clareza",
+  "Para quem está construindo ou reformando e quer economizar",
+  "Para quem trabalha com obra, vidro ou serralheria e quer ampliar o que faz",
+  "Para quem busca uma habilidade prática para gerar renda",
+  "Para quem quer começar pequeno, sem fábrica e sem máquinas caras",
 ];
 
 export function ForWho() {
   return (
-    <Section className="border-y border-border bg-card/30">
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
+    <Section>
+      <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-start">
         <Reveal>
-          <Eyebrow>Reflexão</Eyebrow>
+          <Eyebrow>Por que isso é essencial</Eyebrow>
           <h2 className="mt-5 text-2xl font-bold md:text-3xl">
-            Você ainda não entendeu por que isso é essencial pra você?
+            Por que isso é essencial para você
           </h2>
-          <p className="mt-4 text-muted-foreground">
-            Talvez você já tenha tentado outras formas, mas ainda não encontrou uma estrutura clara
-            que realmente conecte estratégia, execução e resultado.
-          </p>
-          <p className="mt-3 text-muted-foreground">
-            É exatamente por isso que essa mentoria/imersão existe: para encurtar o caminho, reduzir
-            erros e dar mais direção para sua próxima etapa.
-          </p>
+          <BulletList items={whyItems} />
         </Reveal>
         <Reveal delay={0.1}>
-          <h3 className="text-xl font-bold">Para quem essa mentoria faz sentido?</h3>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Essa mentoria faz sentido para quem quer sair da confusão e ter um caminho mais objetivo
-            para evoluir com consistência.
-          </p>
+          <Eyebrow>Para quem é</Eyebrow>
+          <h3 className="mt-5 text-2xl font-bold md:text-3xl">Para quem essa aula faz sentido</h3>
           <BulletList items={forWho} />
+          <p className="mt-4 text-sm text-muted-foreground">
+            Não é para quem espera teoria avançada de engenharia. E não é para quem não quer colocar
+            a mão na massa.
+          </p>
         </Reveal>
       </div>
     </Section>
@@ -235,7 +290,7 @@ export function ForWho() {
 
 export function Differential() {
   return (
-    <Section>
+    <Section className="border-y border-border bg-card/30">
       <Reveal>
         <div className="relative overflow-hidden rounded-3xl border border-primary/30 bg-card/60 p-10 text-center shadow-[var(--shadow-card)] md:p-14">
           <div className="absolute -right-16 -top-16 size-48 rounded-full bg-[image:var(--gradient-gold)] opacity-15 blur-3xl" />
@@ -244,8 +299,14 @@ export function Differential() {
             Um diferencial único
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            O grande diferencial está na forma como tudo foi estruturado: simples de entender, direto
-            de aplicar e focado no que realmente gera transformação.
+            Aqui você não aprende esquadria em pedaços. Você acompanha uma primeira janela simples em
+            uma sequência clara:
+          </p>
+          <p className="mx-auto mt-6 max-w-2xl text-sm font-semibold text-gradient-gold md:text-base">
+            material → medida → plano de corte → corte → montagem → ajuste
+          </p>
+          <p className="mx-auto mt-6 max-w-2xl text-muted-foreground">
+            É isso que transforma confusão em começo.
           </p>
         </div>
       </Reveal>
@@ -254,24 +315,19 @@ export function Differential() {
 }
 
 const testimonials = [
-  "lorem ipsum dolor sit amet",
-  "lorem ipsum dolor sit amet",
-  "lorem ipsum dolor sit amet",
+  "Antes eu achava que esquadria de alumínio era coisa de fábrica. Depois da aula, entendi a ordem das peças, das medidas e da montagem. Agora eu sei por onde começar sem comprar material no escuro.",
 ];
 
 export function Testimonials() {
   return (
-    <Section className="border-y border-border bg-card/30">
+    <Section>
       <Reveal>
         <div className="text-center">
           <Eyebrow>Depoimentos</Eyebrow>
           <h2 className="mt-5 text-3xl font-bold md:text-4xl">O que dizem sobre a experiência</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Veja o que algumas pessoas dizem sobre a experiência e os resultados conquistados.
-          </p>
         </div>
       </Reveal>
-      <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-6">
         {testimonials.map((t, i) => (
           <Reveal key={i} delay={i * 0.1}>
             <figure className="h-full rounded-2xl border border-border bg-card/60 p-7">
@@ -290,6 +346,58 @@ export function Testimonials() {
   );
 }
 
+const offerItems = [
+  "Workshop ao vivo de 2 horas",
+  "Demonstração prática da primeira janela",
+  "Acesso ao grupo de WhatsApp",
+  "Replay por 3 dias",
+  "Suporte básico no período do workshop",
+  "3 bônus de apoio para repetir o processo",
+];
+
+export function Offer() {
+  return (
+    <Section className="border-y border-border bg-card/30">
+      <Reveal>
+        <div className="mx-auto max-w-2xl rounded-3xl border border-primary/30 bg-card/60 p-10 text-center shadow-[var(--shadow-card)]">
+          <Eyebrow>Oferta especial</Eyebrow>
+          <h2 className="mt-5 text-3xl font-bold md:text-4xl">Hoje você recebe</h2>
+          <ul className="mt-8 space-y-3 text-left">
+            {offerItems.map((item) => (
+              <li key={item} className="flex items-start gap-3 text-sm text-foreground/90">
+                <ArrowRight className="mt-0.5 size-4 shrink-0 text-primary" />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 text-sm uppercase tracking-widest text-muted-foreground">Tudo por:</p>
+          <p className="mt-2 text-5xl font-extrabold text-gradient-gold">R$29,90</p>
+          <Button variant="hero" size="xl" className="mt-8">
+            Quero entrar no workshop
+          </Button>
+        </div>
+      </Reveal>
+    </Section>
+  );
+}
+
+export function Guarantee() {
+  return (
+    <Section>
+      <Reveal>
+        <div className="mx-auto flex max-w-2xl flex-col items-center rounded-3xl border border-border bg-card/60 p-10 text-center">
+          <Shield className="size-10 text-primary" />
+          <h2 className="mt-5 text-2xl font-bold md:text-3xl">Garantia de 7 dias</h2>
+          <p className="mt-4 text-muted-foreground">
+            Você tem 7 dias de garantia. Se entrar e sentir que não é para você, pode pedir a
+            devolução dentro do prazo da plataforma. Simples. Sem enrolação.
+          </p>
+        </div>
+      </Reveal>
+    </Section>
+  );
+}
+
 export function FinalCta() {
   return (
     <Section>
@@ -297,14 +405,14 @@ export function FinalCta() {
         <div className="relative overflow-hidden rounded-3xl bg-[image:var(--gradient-hero)] p-10 text-center md:p-16">
           <div className="absolute inset-0 border border-primary/30 rounded-3xl" />
           <h2 className="mx-auto max-w-3xl text-3xl font-bold md:text-5xl">
-            Comece sua transformação com mais direção
+            Comece sua primeira janela com a ordem certa
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-muted-foreground">
-            Se você quer sair de <span className="text-foreground/90">[dor atual]</span> e começar sua
-            transformação com mais direção, esse é o momento de dar o próximo passo.
+            Talvez o que falte não seja coragem. É alguém mostrar a ordem. Esse é o momento de dar o
+            próximo passo.
           </p>
           <Button variant="hero" size="xl" className="mt-9">
-            Quero começar agora
+            Garantir minha vaga por R$29,90
           </Button>
         </div>
       </Reveal>

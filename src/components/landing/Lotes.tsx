@@ -4,35 +4,38 @@ import { Eyebrow, Reveal, Section } from "./primitives";
 
 const lotes = [
   {
-    name: "Lote 1",
-    tag: "Essencial",
-    desc: "Ideal para quem quer começar com o essencial e ter uma base sólida.",
+    name: "1º Lote",
+    tag: "Melhor preço",
+    price: "R$29,90",
+    desc: "O custo mais baixo para dar o seu primeiro passo na esquadria de alumínio.",
     items: [
-      "Entrega 1: lorem ipsum dolor sit amet",
-      "Entrega 2: lorem ipsum dolor sit amet",
-      "Entrega 3: lorem ipsum dolor sit amet",
-    ],
-    featured: false,
-  },
-  {
-    name: "Lote 2",
-    tag: "Mais escolhido",
-    desc: "Indicado para quem deseja avançar com mais profundidade e clareza na execução.",
-    items: [
-      "Entrega 1: lorem ipsum dolor sit amet",
-      "Entrega 2: lorem ipsum dolor sit amet",
-      "Entrega 3: lorem ipsum dolor sit amet",
+      "Workshop ao vivo de 2 horas",
+      "Demonstração prática da primeira janela",
+      "Acesso ao grupo de WhatsApp",
     ],
     featured: true,
   },
   {
-    name: "Lote 3",
-    tag: "Completo",
-    desc: "A opção mais completa para quem busca uma experiência mais estratégica e transformadora.",
+    name: "2º Lote",
+    tag: "Intermediário",
+    price: "R$97,00",
+    desc: "Para quem deixou para depois e ainda quer garantir a vaga no workshop.",
     items: [
-      "Entrega 1: lorem ipsum dolor sit amet",
-      "Entrega 2: lorem ipsum dolor sit amet",
-      "Entrega 3: lorem ipsum dolor sit amet",
+      "Workshop ao vivo de 2 horas",
+      "Demonstração prática da primeira janela",
+      "Acesso ao grupo de WhatsApp",
+    ],
+    featured: false,
+  },
+  {
+    name: "3º Lote",
+    tag: "Último lote",
+    price: "R$197,00",
+    desc: "A última oportunidade de entrar antes do encerramento das vagas.",
+    items: [
+      "Workshop ao vivo de 2 horas",
+      "Demonstração prática da primeira janela",
+      "Acesso ao grupo de WhatsApp",
     ],
     featured: false,
   },
@@ -43,10 +46,10 @@ export function Lotes() {
     <Section id="lotes">
       <div className="text-center">
         <Eyebrow>Escolha seu acesso</Eyebrow>
-        <h2 className="mt-5 text-3xl font-bold md:text-4xl">
-          Lote 1 <span className="text-muted-foreground">|</span> Lote 2{" "}
-          <span className="text-muted-foreground">|</span> Lote 3
-        </h2>
+        <h2 className="mt-5 text-3xl font-bold md:text-4xl">Lotes do workshop</h2>
+        <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+          Quanto antes você entra, menor o custo do seu primeiro passo.
+        </p>
       </div>
 
       <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -69,7 +72,8 @@ export function Lotes() {
                 {lote.tag}
               </span>
               <h3 className="mt-4 text-2xl font-bold">{lote.name}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{lote.desc}</p>
+              <p className="mt-2 text-4xl font-extrabold text-gradient-gold">{lote.price}</p>
+              <p className="mt-3 text-sm text-muted-foreground">{lote.desc}</p>
               <ul className="mt-6 space-y-3">
                 {lote.items.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm">
@@ -83,7 +87,7 @@ export function Lotes() {
                 size="lg"
                 className="mt-7 w-full"
               >
-                Quero garantir minha vaga
+                Garantir minha vaga
               </Button>
             </div>
           </Reveal>

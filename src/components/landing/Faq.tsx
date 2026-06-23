@@ -8,24 +8,24 @@ import { Eyebrow, Section } from "./primitives";
 
 const faqs = [
   {
-    q: "Para quem é essa mentoria?",
-    a: "Ela é indicada para pessoas que desejam [resultado] e querem um caminho mais claro para chegar lá.",
+    q: "Preciso ter experiência com esquadrias?",
+    a: "Não. A aula foi pensada para quem precisa começar pelo básico, com linguagem simples.",
   },
   {
-    q: "Preciso ter experiência prévia?",
-    a: "Não necessariamente. O conteúdo foi pensado para atender desde iniciantes até pessoas que já têm alguma base.",
+    q: "Preciso ter oficina?",
+    a: "Não. A proposta é mostrar o começo em um espaço comum, como garagem ou quintal.",
   },
   {
-    q: "O que está incluso?",
-    a: "Você terá acesso a [conteúdo principal], [bônus] e [suporte/benefícios], conforme o formato da oferta.",
+    q: "Vou aprender a instalar também?",
+    a: "Você vai receber orientações básicas. A instalação completa e avançada fica para o próximo passo.",
   },
   {
-    q: "Como vou receber o acesso?",
-    a: "Após a confirmação, você receberá todas as instruções de acesso ao material e às etapas do processo.",
+    q: "E se eu não puder assistir ao vivo?",
+    a: "O replay ficará disponível por 3 dias.",
   },
   {
-    q: "Em quanto tempo vejo resultados?",
-    a: "Isso depende da sua aplicação, mas a proposta é acelerar sua evolução com clareza e método.",
+    q: "Isso serve para quem quer renda?",
+    a: "Sim. A aula mostra o primeiro passo. Para transformar em profissão, o ideal é seguir para o método completo.",
   },
 ];
 
