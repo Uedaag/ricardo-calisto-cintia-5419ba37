@@ -26,6 +26,7 @@ const lotes = [
       "Acesso ao grupo de WhatsApp",
     ],
     featured: false,
+    locked: true,
   },
   {
     name: "3º Lote",
@@ -38,6 +39,7 @@ const lotes = [
       "Acesso ao grupo de WhatsApp",
     ],
     featured: false,
+    locked: true,
   },
 ];
 
