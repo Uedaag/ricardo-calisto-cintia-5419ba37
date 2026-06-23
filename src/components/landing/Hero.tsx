@@ -24,7 +24,7 @@ const models: Model[] = [
       </>
     ),
     subheadline:
-      "Se você já olhou orçamento, achou caro e pensou “eu queria saber fazer isso”, essa aula mostra o primeiro passo. Uma janela simples, em ambiente comum, com poucas ferramentas — para você sair da confusão e enxergar um caminho possível.",
+      "Se você já olhou orçamento, achou caro e pensou “eu queria saber fazer isso”, essa aula mostra o primeiro passo. Uma janela simples, em ambiente comum, com poucas ferramentas, para você sair da confusão e enxergar um caminho possível.",
     cta: "Quero ver como começar por R$29,90",
   },
   {
@@ -47,12 +47,12 @@ const models: Model[] = [
     badge: "Resultado concreto em 2 horas",
     headline: (
       <>
-        Veja como fabricar sua primeira janela de alumínio em casa —{" "}
+        Veja como fabricar sua primeira janela de alumínio em casa,{" "}
         <span className="text-gradient-gold">sem oficina e sem máquinas caras</span>.
       </>
     ),
     subheadline:
-      "Em 2 horas, você entende os materiais, acompanha o plano de corte e vê a montagem de uma janela simples de 2 folhas — pronta para repetir com mais segurança.",
+      "Em 2 horas, você entende os materiais, acompanha o plano de corte e vê a montagem de uma janela simples de 2 folhas, pronta para repetir com mais segurança.",
     cta: "Quero minha vaga no workshop",
   },
 ];
@@ -62,18 +62,11 @@ export function Hero() {
   const model = models[active];
 
   return (
-    <header className="relative min-h-[100svh] overflow-hidden">
-      <img
-        src={heroAsset.url}
-        alt="Expert em esquadrias de alumínio em sua fábrica"
-        width={1664}
-        height={936}
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center"
-      />
-
-      <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-5 py-16 md:py-24">
-        <div className="w-full max-w-xl rounded-3xl border border-border/60 bg-background/70 p-7 backdrop-blur-md shadow-[var(--shadow-card)] md:p-10">
-          <div className="flex flex-wrap gap-2">
+    <header className="relative">
+      {/* Top centered model selector */}
+      <div className="sticky top-0 z-30 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl items-center justify-center px-4 py-3">
+          <div className="flex flex-wrap items-center justify-center gap-2 rounded-full border border-border bg-card/60 p-1.5">
             {models.map((m, i) => (
               <button
                 key={m.id}
@@ -83,32 +76,61 @@ export function Hero() {
                 className={`rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors ${
                   i === active
                     ? "bg-[image:var(--gradient-gold)] text-primary-foreground"
-                    : "border border-border bg-card/60 text-muted-foreground hover:text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {m.label}
               </button>
             ))}
           </div>
+        </div>
+      </div>
 
-          <span className="mt-6 inline-block rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-            {model.badge}
-          </span>
+      <div className="relative overflow-hidden">
+        {/* Desktop full-bleed background */}
+        <img
+          src={heroAsset.url}
+          alt="Ricardo Calisto, especialista em esquadrias de alumínio"
+          width={1664}
+          height={936}
+          className="pointer-events-none absolute inset-0 hidden h-full w-full object-cover object-center lg:block"
+        />
 
-          <h1 className="mt-5 text-3xl font-extrabold leading-[1.12] md:text-5xl">
-            {model.headline}
-          </h1>
-          <p className="mt-5 text-base text-muted-foreground md:text-lg">{model.subheadline}</p>
-
-          <div className="mt-8">
-            <Countdown />
+        <div className="relative mx-auto flex max-w-6xl flex-col justify-center px-5 py-10 lg:min-h-[88svh] lg:py-24">
+          {/* Framed image for tablet & mobile */}
+          <div className="mb-8 lg:hidden">
+            <div className="overflow-hidden rounded-3xl border-4 border-primary/40 shadow-[var(--shadow-card)]">
+              <img
+                src={heroAsset.url}
+                alt="Ricardo Calisto, especialista em esquadrias de alumínio"
+                width={1664}
+                height={936}
+                className="aspect-[4/3] w-full object-cover object-center"
+              />
+            </div>
           </div>
 
-          <Button variant="hero" size="xl" className="mt-8 w-full sm:w-auto">
-            {model.cta}
-          </Button>
+          <div className="w-full max-w-xl rounded-3xl border border-border/60 bg-background/70 p-7 backdrop-blur-md shadow-[var(--shadow-card)] md:p-10">
+            <span className="inline-block rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              {model.badge}
+            </span>
+
+            <h1 className="mt-5 text-3xl font-extrabold leading-[1.12] md:text-5xl">
+              {model.headline}
+            </h1>
+            <p className="mt-5 text-base text-muted-foreground md:text-lg">{model.subheadline}</p>
+
+            <div className="mt-8">
+              <Countdown />
+            </div>
+
+            <Button variant="hero" size="xl" className="mt-8 w-full sm:w-auto">
+              {model.cta}
+            </Button>
+          </div>
         </div>
       </div>
     </header>
   );
 }
+
