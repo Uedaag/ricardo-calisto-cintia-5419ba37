@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const TARGET_OFFSET_MS = 3 * 24 * 60 * 60 * 1000; // 3 days from first load
+const TARGET_OFFSET_MS = 3 * 60 * 60 * 1000; // 3 hours from first load
 
 function getTarget(): number {
   if (typeof window === "undefined") return Date.now() + TARGET_OFFSET_MS;
@@ -20,8 +20,7 @@ function diffToParts(ms: number): TimePart[] {
   const clamped = Math.max(0, ms);
   const totalSeconds = Math.floor(clamped / 1000);
   return [
-    { label: "Dias", value: Math.floor(totalSeconds / 86400) },
-    { label: "Horas", value: Math.floor((totalSeconds % 86400) / 3600) },
+    { label: "Horas", value: Math.floor(totalSeconds / 3600) },
     { label: "Min", value: Math.floor((totalSeconds % 3600) / 60) },
     { label: "Seg", value: totalSeconds % 60 },
   ];
@@ -41,7 +40,7 @@ export function Countdown() {
   return (
     <div className="flex flex-col items-center gap-3">
       <p className="text-sm font-medium text-muted-foreground">
-        As vagas estão acabando, garanta a sua antes que o lote vire.
+        Faltam poucas horas para acabar, garanta a sua antes que o lote vire.
       </p>
       <div className="flex items-center gap-2 md:gap-3">
         {parts.map((part) => (

@@ -124,9 +124,11 @@ export function Hero() {
               <Countdown />
             </div>
 
-            <Button variant="hero" size="xl" className="mt-8 w-full sm:w-auto">
-              {model.cta}
-            </Button>
+            <div className="mt-8 flex justify-center">
+              <Button variant="hero" size="xl" className="w-full sm:w-auto">
+                {model.cta}
+              </Button>
+            </div>
           </div>
         </div>
       </div>
