@@ -94,8 +94,10 @@ export function Lotes() {
                 variant={lote.featured ? "hero" : "heroOutline"}
                 size="lg"
                 className="mt-7 w-full"
+                disabled={lote.locked}
+                aria-disabled={lote.locked}
               >
-                Garantir minha vaga
+                {lote.locked ? "Indisponível" : "Garantir minha vaga"}
               </Button>
             </div>
           </Reveal>
