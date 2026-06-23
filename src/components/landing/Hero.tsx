@@ -47,8 +47,8 @@ const models: Model[] = [
     badge: "Resultado concreto em 2 horas",
     headline: (
       <>
-        Veja como fabricar sua primeira janela de alumínio em casa,{" "}
-        <span className="text-gradient-gold">sem oficina e sem máquinas caras</span>.
+        Você vai ver como fabricar sua primeira janela de alumínio em casa,{" "}
+        <span className="text-gradient-gold">sem oficina, sem experiência e sem máquinas caras</span>.
       </>
     ),
     subheadline:
