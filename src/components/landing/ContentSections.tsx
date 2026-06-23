@@ -1,7 +1,7 @@
 import { ArrowRight, Quote, Shield, Sparkles, Star, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Eyebrow, Reveal, Section } from "./primitives";
-import expertImg from "@/assets/expert.jpg";
+import expertImg from "@/assets/calisto.png.asset.json";
 
 function BulletList({ items }: { items: string[] }) {
   return (
@@ -92,7 +92,7 @@ export function Expert() {
           <div className="relative mx-auto max-w-sm">
             <div className="absolute -inset-4 rounded-3xl bg-[image:var(--gradient-gold)] opacity-20 blur-2xl" />
             <img
-              src={expertImg}
+              src={expertImg.url}
               alt="Foto de Ricardo Calisto, especialista em esquadrias de alumínio"
               loading="lazy"
               width={800}

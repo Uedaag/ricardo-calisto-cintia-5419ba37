@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { Check, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Eyebrow, Reveal, Section } from "./primitives";
 
@@ -26,6 +26,7 @@ const lotes = [
       "Acesso ao grupo de WhatsApp",
     ],
     featured: false,
+    locked: true,
   },
   {
     name: "3º Lote",
@@ -38,6 +39,7 @@ const lotes = [
       "Acesso ao grupo de WhatsApp",
     ],
     featured: false,
+    locked: true,
   },
 ];
 
@@ -56,12 +58,18 @@ export function Lotes() {
         {lotes.map((lote, i) => (
           <Reveal key={lote.name} delay={i * 0.1}>
             <div
-              className={`flex h-full flex-col rounded-2xl border p-7 shadow-[var(--shadow-card)] ${
+              className={`relative flex h-full flex-col rounded-2xl border p-7 shadow-[var(--shadow-card)] ${
                 lote.featured
                   ? "border-primary/60 bg-card ring-1 ring-primary/30"
                   : "border-border bg-card/60"
-              }`}
+              } ${lote.locked ? "opacity-60" : ""}`}
             >
+              {lote.locked && (
+                <span className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full border border-border bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
+                  <Lock className="size-3" />
+                  Em breve
+                </span>
+              )}
               <span
                 className={`inline-block w-fit rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider ${
                   lote.featured
@@ -86,8 +94,10 @@ export function Lotes() {
                 variant={lote.featured ? "hero" : "heroOutline"}
                 size="lg"
                 className="mt-7 w-full"
+                disabled={lote.locked}
+                aria-disabled={lote.locked}
               >
-                Garantir minha vaga
+                {lote.locked ? "Indisponível" : "Garantir minha vaga"}
               </Button>
             </div>
           </Reveal>
