@@ -155,14 +155,14 @@ export function Foundations() {
           </p>
           <div className="mt-6 space-y-4">
             <div className="rounded-2xl border border-border bg-card/60 p-5">
-              <p className="text-sm font-semibold text-primary">Fase 1 — Entender o começo certo</p>
+              <p className="text-sm font-semibold text-primary">Fase 1, Entender o começo certo</p>
               <p className="mt-2 text-sm text-muted-foreground">
                 Você vai ver quais materiais, perfis e ferramentas fazem sentido para uma primeira
                 janela, sem comprar coisa à toa.
               </p>
             </div>
             <div className="rounded-2xl border border-border bg-card/60 p-5">
-              <p className="text-sm font-semibold text-primary">Fase 2 — Ver a janela nascer</p>
+              <p className="text-sm font-semibold text-primary">Fase 2, Ver a janela nascer</p>
               <p className="mt-2 text-sm text-muted-foreground">
                 Você acompanha medida, plano de corte, corte dos perfis e montagem da janela simples
                 de 2 folhas.
@@ -180,7 +180,7 @@ const learnItems = [
   "Como tirar a medida e montar o plano de corte",
   "Como cortar os perfis sem desperdiçar material",
   "Como montar uma janela simples de 2 folhas",
-  "Onde o iniciante mais erra — e como evitar",
+  "Onde o iniciante mais erra, e como evitar",
 ];
 
 export function Learn() {
@@ -212,15 +212,15 @@ export function Learn() {
 
 const bonuses = [
   {
-    title: "Bônus 1 — Mini-guia de ferramentas essenciais",
+    title: "Bônus 1, Mini-guia de ferramentas essenciais",
     desc: "Para saber o que usar no começo, incluindo alternativas mais baratas.",
   },
   {
-    title: "Bônus 2 — Modelo de plano de corte",
+    title: "Bônus 2, Modelo de plano de corte",
     desc: "O mesmo modelo usado na aula, pronto para imprimir e adaptar.",
   },
   {
-    title: "Bônus 3 — Checklist Primeira Produção em Casa",
+    title: "Bônus 3, Checklist Primeira Produção em Casa",
     desc: "Um passo a passo resumido para seguir depois da aula.",
   },
 ];

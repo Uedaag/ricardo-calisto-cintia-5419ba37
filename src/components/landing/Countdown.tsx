@@ -41,7 +41,7 @@ export function Countdown() {
   return (
     <div className="flex flex-col items-center gap-3">
       <p className="text-sm font-medium text-muted-foreground">
-        As vagas estão acabando — garanta a sua antes que o lote vire.
+        As vagas estão acabando, garanta a sua antes que o lote vire.
       </p>
       <div className="flex items-center gap-2 md:gap-3">
         {parts.map((part) => (

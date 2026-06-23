@@ -60,7 +60,7 @@ function Index() {
       <Faq />
       <FinalCta />
       <footer className="border-t border-border px-5 py-10 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Ricardo Calisto — Esquadrias em Mãos. Todos os direitos
+        © {new Date().getFullYear()} Ricardo Calisto, Esquadrias em Mãos. Todos os direitos
         reservados.
       </footer>
     </main>

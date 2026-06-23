@@ -24,7 +24,7 @@ const models: Model[] = [
       </>
     ),
     subheadline:
-      "Se você já olhou orçamento, achou caro e pensou “eu queria saber fazer isso”, essa aula mostra o primeiro passo. Uma janela simples, em ambiente comum, com poucas ferramentas — para você sair da confusão e enxergar um caminho possível.",
+      "Se você já olhou orçamento, achou caro e pensou “eu queria saber fazer isso”, essa aula mostra o primeiro passo. Uma janela simples, em ambiente comum, com poucas ferramentas, para você sair da confusão e enxergar um caminho possível.",
     cta: "Quero ver como começar por R$29,90",
   },
   {
@@ -47,12 +47,12 @@ const models: Model[] = [
     badge: "Resultado concreto em 2 horas",
     headline: (
       <>
-        Veja como fabricar sua primeira janela de alumínio em casa —{" "}
+        Veja como fabricar sua primeira janela de alumínio em casa,{" "}
         <span className="text-gradient-gold">sem oficina e sem máquinas caras</span>.
       </>
     ),
     subheadline:
-      "Em 2 horas, você entende os materiais, acompanha o plano de corte e vê a montagem de uma janela simples de 2 folhas — pronta para repetir com mais segurança.",
+      "Em 2 horas, você entende os materiais, acompanha o plano de corte e vê a montagem de uma janela simples de 2 folhas, pronta para repetir com mais segurança.",
     cta: "Quero minha vaga no workshop",
   },
 ];
