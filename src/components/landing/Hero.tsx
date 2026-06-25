@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Countdown } from "./Countdown";
-import heroAsset from "@/assets/expert-hero.png.asset.json";
+const heroAsset = { url: "/img/expert-hero.png" };
 
 interface Model {
   id: string;
