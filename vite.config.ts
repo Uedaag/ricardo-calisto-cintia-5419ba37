@@ -12,4 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Pin the Vercel preset for self-hosted deploys (e.g. GitHub -> Vercel).
+  // Inside a Lovable build this is ignored and the Cloudflare target is forced,
+  // so Lovable's own Publish keeps working. Outside it, Nitro emits Vercel's
+  // Build Output API folder (.vercel/output) so SSR routes resolve (no 404s).
+  nitro: { preset: "vercel" },
 });
