@@ -1,7 +1,7 @@
 import { ArrowRight, Quote, Shield, Sparkles, Star, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Eyebrow, Reveal, Section } from "./primitives";
-import expertImg from "@/assets/calisto.png.asset.json";
+const expertImg = { url: "/img/calisto.png" };
 
 function BulletList({ items }: { items: string[] }) {
   return (
