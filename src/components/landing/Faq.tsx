@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: "Vou aprender a instalar também?",
-    a: "Você vai receber orientações básicas. A instalação completa e avançada fica para o próximo passo.",
+    a: "Sim. O workshop garante a fabricação completa da janela e também a instalação. Você vai aprender a fabricar e instalar.",
   },
   {
     q: "E se eu não puder assistir ao vivo?",
