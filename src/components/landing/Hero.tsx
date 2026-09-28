@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Countdown } from "./Countdown";
 const heroAsset = { url: "/img/expert-hero.png" };
@@ -57,8 +56,6 @@ const models: Model[] = [
   },
 ];
 
-const modelPaths = ["/", "/modelo-2", "/modelo-3"] as const;
-
 export interface HeroProps {
   /** Índice do modelo de copy (0, 1 ou 2). */
   variant: 0 | 1 | 2;
@@ -70,28 +67,6 @@ export function Hero({ variant }: HeroProps) {
 
   return (
     <header className="relative">
-      {/* Top centered model selector */}
-      <div className="sticky top-0 z-30 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-center px-4 py-3">
-          <div className="flex flex-wrap items-center justify-center gap-2 rounded-full border border-border bg-card/60 p-1.5">
-            {models.map((m, i) => (
-              <Link
-                key={m.id}
-                to={modelPaths[i]}
-                aria-current={i === active ? "page" : undefined}
-                className={`rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors ${
-                  i === active
-                    ? "bg-[image:var(--gradient-gold)] text-primary-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {m.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-
       <div className="relative overflow-hidden">
         {/* Desktop full-bleed background */}
         <img
