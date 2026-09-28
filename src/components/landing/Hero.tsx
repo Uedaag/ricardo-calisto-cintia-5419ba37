@@ -56,6 +56,15 @@ const models: Model[] = [
   },
 ];
 
+export interface HeroProps {
+  /** Índice do modelo de copy (0, 1 ou 2). */
+  variant: 0 | 1 | 2;
+}
+
+export function Hero({ variant }: HeroProps) {
+  const active = variant;
+  const model = models[active];
+
   return (
     <header className="relative">
       <div className="relative overflow-hidden">
