@@ -10,11 +10,29 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ObrigadoRouteImport } from './routes/obrigado'
+import { Route as Modelo3RouteImport } from './routes/modelo-3'
+import { Route as Modelo2RouteImport } from './routes/modelo-2'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ObrigadoRoute = ObrigadoRouteImport.update({
+  id: '/obrigado',
+  path: '/obrigado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Modelo3Route = Modelo3RouteImport.update({
+  id: '/modelo-3',
+  path: '/modelo-3',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Modelo2Route = Modelo2RouteImport.update({
+  id: '/modelo-2',
+  path: '/modelo-2',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +43,45 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/modelo-2': typeof Modelo2Route
+  '/modelo-3': typeof Modelo3Route
+  '/obrigado': typeof ObrigadoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/modelo-2': typeof Modelo2Route
+  '/modelo-3': typeof Modelo3Route
+  '/obrigado': typeof ObrigadoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/modelo-2': typeof Modelo2Route
+  '/modelo-3': typeof Modelo3Route
+  '/obrigado': typeof ObrigadoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sitemap.xml'
+  fullPaths: '/' | '/modelo-2' | '/modelo-3' | '/obrigado' | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sitemap.xml'
-  id: '__root__' | '/' | '/sitemap.xml'
+  to: '/' | '/modelo-2' | '/modelo-3' | '/obrigado' | '/sitemap.xml'
+  id:
+    | '__root__'
+    | '/'
+    | '/modelo-2'
+    | '/modelo-3'
+    | '/obrigado'
+    | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  Modelo2Route: typeof Modelo2Route
+  Modelo3Route: typeof Modelo3Route
+  ObrigadoRoute: typeof ObrigadoRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -56,6 +92,27 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/obrigado': {
+      id: '/obrigado'
+      path: '/obrigado'
+      fullPath: '/obrigado'
+      preLoaderRoute: typeof ObrigadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/modelo-3': {
+      id: '/modelo-3'
+      path: '/modelo-3'
+      fullPath: '/modelo-3'
+      preLoaderRoute: typeof Modelo3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/modelo-2': {
+      id: '/modelo-2'
+      path: '/modelo-2'
+      fullPath: '/modelo-2'
+      preLoaderRoute: typeof Modelo2RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,8 +127,21 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  Modelo2Route: Modelo2Route,
+  Modelo3Route: Modelo3Route,
+  ObrigadoRoute: ObrigadoRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

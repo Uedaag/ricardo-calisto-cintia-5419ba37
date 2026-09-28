@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Countdown } from "./Countdown";
 const heroAsset = { url: "/img/expert-hero.png" };
@@ -57,8 +57,15 @@ const models: Model[] = [
   },
 ];
 
-export function Hero() {
-  const [active, setActive] = useState(0);
+const modelPaths = ["/", "/modelo-2", "/modelo-3"] as const;
+
+export interface HeroProps {
+  /** Índice do modelo de copy (0, 1 ou 2). */
+  variant: 0 | 1 | 2;
+}
+
+export function Hero({ variant }: HeroProps) {
+  const active = variant;
   const model = models[active];
 
   return (
@@ -68,11 +75,10 @@ export function Hero() {
         <div className="mx-auto flex max-w-6xl items-center justify-center px-4 py-3">
           <div className="flex flex-wrap items-center justify-center gap-2 rounded-full border border-border bg-card/60 p-1.5">
             {models.map((m, i) => (
-              <button
+              <Link
                 key={m.id}
-                type="button"
-                onClick={() => setActive(i)}
-                aria-pressed={i === active}
+                to={modelPaths[i]}
+                aria-current={i === active ? "page" : undefined}
                 className={`rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors ${
                   i === active
                     ? "bg-[image:var(--gradient-gold)] text-primary-foreground"
@@ -80,7 +86,7 @@ export function Hero() {
                 }`}
               >
                 {m.label}
-              </button>
+              </Link>
             ))}
           </div>
         </div>
