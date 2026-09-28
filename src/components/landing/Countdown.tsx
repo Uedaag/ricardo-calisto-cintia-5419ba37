@@ -1,4 +1,4 @@
-import { useEffect, useState } "react";
+import { useEffect, useState } from "react";
 
 // Workshop: 10/10 às 9h (horário de Brasília, UTC-3)
 const TARGET_ISO = "2026-10-10T09:00:00-03:00";
