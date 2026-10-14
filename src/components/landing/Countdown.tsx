@@ -77,7 +77,6 @@ export function Countdown() {
           </div>
         ))}
       </div>
-      {deadline !== null && deadline - Date.now() <= 0 && parts && parts.every((p) => p.value === 0) ? null : null}
     </div>
   );
 }
