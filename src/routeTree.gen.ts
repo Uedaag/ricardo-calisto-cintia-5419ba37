@@ -9,25 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as Modelo2RouteImport } from './routes/modelo-2'
-import { Route as Modelo3RouteImport } from './routes/modelo-3'
-import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ObrigadoRouteImport } from './routes/obrigado'
+import { Route as Modelo3RouteImport } from './routes/modelo-3'
+import { Route as Modelo2RouteImport } from './routes/modelo-2'
+import { Route as IndexRouteImport } from './routes/index'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Modelo2Route = Modelo2RouteImport.update({
-  id: '/modelo-2',
-  path: '/modelo-2',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Modelo3Route = Modelo3RouteImport.update({
-  id: '/modelo-3',
-  path: '/modelo-3',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ObrigadoRoute = ObrigadoRouteImport.update({
@@ -35,9 +25,19 @@ const ObrigadoRoute = ObrigadoRouteImport.update({
   path: '/obrigado',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
+const Modelo3Route = Modelo3RouteImport.update({
+  id: '/modelo-3',
+  path: '/modelo-3',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Modelo2Route = Modelo2RouteImport.update({
+  id: '/modelo-2',
+  path: '/modelo-2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -69,7 +69,12 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/modelo-2' | '/modelo-3' | '/obrigado' | '/sitemap.xml'
   id:
-    '__root__' | '/' | '/modelo-2' | '/modelo-3' | '/obrigado' | '/sitemap.xml'
+    | '__root__'
+    | '/'
+    | '/modelo-2'
+    | '/modelo-3'
+    | '/obrigado'
+    | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -82,25 +87,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/modelo-2': {
-      id: '/modelo-2'
-      path: '/modelo-2'
-      fullPath: '/modelo-2'
-      preLoaderRoute: typeof Modelo2RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/modelo-3': {
-      id: '/modelo-3'
-      path: '/modelo-3'
-      fullPath: '/modelo-3'
-      preLoaderRoute: typeof Modelo3RouteImport
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/obrigado': {
@@ -110,11 +101,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ObrigadoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
+    '/modelo-3': {
+      id: '/modelo-3'
+      path: '/modelo-3'
+      fullPath: '/modelo-3'
+      preLoaderRoute: typeof Modelo3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/modelo-2': {
+      id: '/modelo-2'
+      path: '/modelo-2'
+      fullPath: '/modelo-2'
+      preLoaderRoute: typeof Modelo2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
