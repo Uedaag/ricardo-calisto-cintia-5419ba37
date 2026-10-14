@@ -55,7 +55,7 @@ export function Countdown() {
   return (
     <div className="flex flex-col items-center gap-3">
       <p className="text-center text-sm font-medium text-muted-foreground">
-        O workshop ao vivo é dia 10/10 às 9h. Garanta a sua antes que o lote vire.
+        O workshop ao vivo é dia 31/10 às 9h. Garanta a sua antes que o lote vire.
       </p>
       <div className="flex items-center gap-2 md:gap-3">
         {(parts ??
