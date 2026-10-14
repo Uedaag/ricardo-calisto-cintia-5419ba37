@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 
-// Workshop: 10/10 às 9h (horário de Brasília, UTC-3)
-const TARGET_ISO = "2026-10-10T09:00:00-03:00";
-const target = new Date(TARGET_ISO).getTime();
+// Cronômetro evergreen: sempre mostra 2h regressivas a partir de quando a
+// pessoa entra na página. O prazo é guardado na sessão (sessionStorage) para
+// não reiniciar a cada recarregamento dentro da mesma visita.
+const DURATION_MS = 2 * 60 * 60 * 1000; // 2 horas
+const STORAGE_KEY = "workshop-countdown-end";
 
 interface TimePart {
   label: string;
@@ -19,11 +21,32 @@ function diffToParts(ms: number): TimePart[] {
   ];
 }
 
+function getDeadline(): number {
+  try {
+    const stored = window.sessionStorage.getItem(STORAGE_KEY);
+    const parsed = stored ? Number(stored) : NaN;
+    // Se não existe prazo válido na sessão (ou já expirou), cria um novo:
+    // agora + 2h, garantindo que o visitante sempre vê "falta 2 horas".
+    if (!Number.isFinite(parsed) || parsed <= Date.now()) {
+      const next = Date.now() + DURATION_MS;
+      window.sessionStorage.setItem(STORAGE_KEY, String(next));
+      return next;
+    }
+    return parsed;
+  } catch {
+    // sessionStorage indisponível: cronômetro em memória apenas.
+    return Date.now() + DURATION_MS;
+  }
+}
+
 export function Countdown() {
   const [parts, setParts] = useState<TimePart[] | null>(null);
+  const [deadline, setDeadline] = useState<number | null>(null);
 
   useEffect(() => {
-    const tick = () => setParts(diffToParts(target - Date.now()));
+    const end = getDeadline();
+    setDeadline(end);
+    const tick = () => setParts(diffToParts(end - Date.now()));
     tick();
     const interval = window.setInterval(tick, 1000);
     return () => window.clearInterval(interval);
@@ -37,7 +60,7 @@ export function Countdown() {
       <div className="flex items-center gap-2 md:gap-3">
         {(parts ??
           [
-            { label: "Horas", value: 0 },
+            { label: "Horas", value: 2 },
             { label: "Min", value: 0 },
             { label: "Seg", value: 0 },
           ]).map((part) => (
